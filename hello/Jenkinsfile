@@ -6,10 +6,8 @@ pipeline {
             steps {
                 git 'https://github.com/fatih76/JenkinsGitExample.git'
             }
-        }
-    }
-    
-    stages {
+        }   
+   
         stage('Datei') {
             steps {
                 echo 'Zu testende datei:'
@@ -17,25 +15,21 @@ pipeline {
                 python3.12 hello.py
                 pwd '''
             }
-        }
-    }
+        }   
     
-    stages {
         stage('Unittest') {
             steps {                
                 sh ''' echo 'Unittest-DAtei'
                 cd hello
                 python3.12 test_hello.py '''
             }
-        }
-    }
-    
-    stages {
+        }    
+   
         stage('Deploy') {
             steps {
                 echo 'Deploying app'
                 echo 'echo OK!'
             }
-        }
-    }
+        }  
+    } 
 }
