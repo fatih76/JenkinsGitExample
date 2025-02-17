@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git-Checkout') {
+            steps {
+                echo 'Checking out from git repo'
+                git branch: 'main', credentialsID: 'bla', url: 'blabla'
+            }
+        }
+    }
+    
+    stages {
+        stage('Datei') {
+            steps {
+                echo 'Zu testende datei:'
+                sh ''' cd hello
+                python3.12 hello.py
+                pwd '''
+            }
+        }
+    }
+    
+    stages {
+        stage('Unittest') {
+            steps {
+                echo 'Unittest-DAtei'
+                cd hello
+                python3.12 test_hello.py
+            }
+        }
+    }
+    
+    stages {
+        stage('Deploy') {
+            steps {
+                echo 'Deploying app'
+                echo 'echo OK!'
+            }
+        }
+    }
+}
