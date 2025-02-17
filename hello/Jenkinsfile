@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Git-Checkout') {
             steps {
-                echo 'Checking out from git repo'
-                git branch: 'main', credentialsID: 'bla', url: 'blabla'
+                git 'https://github.com/fatih76/JenkinsGitExample.git'
             }
         }
     }
@@ -23,10 +22,10 @@ pipeline {
     
     stages {
         stage('Unittest') {
-            steps {
-                echo 'Unittest-DAtei'
+            steps {                
+                sh ''' echo 'Unittest-DAtei'
                 cd hello
-                python3.12 test_hello.py
+                python3.12 test_hello.py '''
             }
         }
     }
