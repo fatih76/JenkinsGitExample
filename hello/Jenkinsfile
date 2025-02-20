@@ -6,12 +6,14 @@ pipeline {
             steps {
         	git branch: 'main', url: 'https://github.com/fatih76/JenkinsGitExample.git'
             }
-        }   
-   
+        }    
+    
         stage('Datei') {
             steps {
                 echo 'Zu testende datei:'
-                sh ''' cd hello
+                sh ''' cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins
+                git clone https://github.com/fatih76/JenkinsGitExample.git
+                cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins/JenkinsGitExample/hello
                 python3.12 hello.py
                 pwd '''
             }
@@ -19,8 +21,8 @@ pipeline {
     
         stage('Unittest') {
             steps {                
-                sh ''' echo 'Unittest-DAtei'
-                cd hello
+                sh ''' echo 'Unittest-Datei'
+                cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins/JenkinsGitExample/hello
                 python3.12 test_hello.py '''
             }
         }    
@@ -31,5 +33,17 @@ pipeline {
                 echo 'echo OK!'
             }
         }  
-    } 
+    }
+    
+    post {
+        failure {
+            echo 'Bauen war nicht erfolgreich'
+        }
+        
+        success {
+            sh ''' cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins
+            cp -r JenkinsGitExample /var/lib/jenkins/workspace
+            '''
+        }
+    }
 }
