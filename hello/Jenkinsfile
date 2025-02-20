@@ -21,7 +21,7 @@ pipeline {
             steps {                
                 sh ''' echo 'Unittest-Datei'
                 cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins/JenkinsGitExample/hello
-                python3.12 test_hello.py '''
+                python3.12 test_hellllo.py '''
             }
         }    
    
