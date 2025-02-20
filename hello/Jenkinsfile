@@ -36,6 +36,8 @@ pipeline {
     post {
         failure {
             echo 'Bauen war nicht erfolgreich'
+            mail bcc: '', body: 'Das Testen der python hello-world anwendung ist fehlgeschlagen!', cc: '', from: 'fatih-oecalmis@gmx.de', 	
+	    replyTo: 'fatihocalmis76@gmail.com', subject: 'automated jenkins build-error notification', to: 'fatihocalmis76@gmail.com'
         }
         
         success {
