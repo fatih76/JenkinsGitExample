@@ -10,7 +10,7 @@ pipeline {
     
         stage('Datei') {
             steps {
-                echo 'Zu testende datei:'
+                echo 'Zu testende Datei:'
                 sh ''' cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins/JenkinsGitExample
                 git pull origin main
                 cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins/JenkinsGitExample/hello
