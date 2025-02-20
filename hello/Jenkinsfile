@@ -41,7 +41,9 @@ pipeline {
         }
         
         success {
-            sh ''' cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins
+            sh ''' cd /var/lib/jenkins/workspace
+            rm -rf JenkinsGitExample/ JenkinsGitExample@tmp
+            cd /home/fatih/Fatih/IT-Lernen/Programmierung/Jenkins
             cp -r JenkinsGitExample /var/lib/jenkins/workspace
             '''
         }
